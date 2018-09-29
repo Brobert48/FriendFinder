@@ -27,24 +27,15 @@ module.exports = function(app) {
       console.log("friends: " +friends);
       for(let i = 0; i < friends.length; i++){
           var score = friends[i].scores;
-          console.log("score: "+ score);
-          console.log("StoredScores: "+ storedScores);
-          var totalDifference;
+          let totalDifference = 0;
           for(let j = 0; j<score.length; j++){
               var difference = Math.abs(currentUserScores[j]-score[j]);
-          console.log("totalDifference1: "+totalDifference);
               totalDifference = totalDifference + difference;
-          console.log("totalDifference2: "+totalDifference);
-
-              console.log("difference: "+ difference);
           }
-          console.log("totalDifference: "+totalDifference);
-
           storedScores.push(totalDifference);
-          console.log("StoredScores2: "+ storedScores)
       }
       var match = indexOfMin(storedScores);
-      console.log("Match: "+ match);
+      friends.push(newFriend);
       res.json(friends[match]);
   });
 };
